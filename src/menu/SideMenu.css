@@ -1,0 +1,21 @@
+.SideMenu {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+button {
+    user-select: none;
+    color: white;
+    font-size: 20px;
+    width: 200px;
+    border: 5px solid darkorange;
+    border-radius: 10px;
+    background: transparent;
+    margin: 5px;
+}
