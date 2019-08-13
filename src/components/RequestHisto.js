@@ -1,15 +1,19 @@
 import React from "react";
 
-class RequestHisto extends React.Component{
+class RequestHisto extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
 
-        return(
+        return (
             <p>
-                {this.props.isOpen && <div>This is a Histo stub</div>}
+                {this.props.isOpen &&
+                <div>
+                    This is a Histo stub
+                </div>
+                }
             </p>
         );
     }

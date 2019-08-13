@@ -1,5 +1,6 @@
 import React from "react";
 import "./style/RequestMGRCollapsible.css";
+import "./style/RequestManager.css";
 import RequestInfo from "./subcomponents/RequestInfo";
 
 class RequestManager extends React.Component {
@@ -43,8 +44,8 @@ class RequestManager extends React.Component {
             <div>
                 {this.props.isOpen &&
                 <div>
-                    <input className={"request-filter"} value={this.state.inputValue} type="text"
-                           onInput={this.updateFieldValue}/>
+                    Filter by Request ID: <input className={"request-filter"} value={this.state.inputValue} type="text"
+                                                 onInput={this.updateFieldValue}/>
                     {this.state.activeElements}
                 </div>}
             </div>
