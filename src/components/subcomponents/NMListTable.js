@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactTable from "react-table";
 import {FaEdit} from 'react-icons/fa';
-import "./NMListTable.css";
+import "../style/NMListTable.css";
 
 const mydata = [
     {
