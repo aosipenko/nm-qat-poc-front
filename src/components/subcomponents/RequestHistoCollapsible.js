@@ -1,14 +1,15 @@
 import React from "react";
 
-class HistoCollapsible extends React.Component {
+class RequestHistoCollapsible extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
     render() {
         return (
             <div>
-
+                {this.state.elements}
             </div>
         );
     }
