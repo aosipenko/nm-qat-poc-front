@@ -63,16 +63,17 @@ class RequestResultDetails extends React.Component {
                     columns={myColumns}
                     showPagination={false}
                 />
-                <Popup trigger={<button>Details</button>}>
-                    <RecallDetails isOpen={this.state.detailsState} toggle={this.toggleDetails}/>
+                <Popup trigger={<button>Details</button>}
+                       open={this.state.detailsState}>
+                    <RecallDetails
+                        closeModal={this.toggleDetails}
+                    />
                 </Popup>
-
-
             </div>
         );
     }
 
-    toggleDetails(key) {
+    toggleDetails() {
         let newState = !this.state.detailsState;
         this.setState({detailsState: newState});
     }

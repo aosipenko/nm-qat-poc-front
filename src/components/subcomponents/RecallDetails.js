@@ -2,6 +2,7 @@ import React from "react";
 import ReactTable from "react-table";
 import Toggle from 'react-toggle'
 import 'react-toggle/style.css'
+import {FaWindowClose} from "react-icons/fa";
 
 const mydata = [
     {
@@ -45,7 +46,10 @@ class RecallDetails extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {displayData: mydata};
+        this.state = {
+            showFiltered: false,
+            displayData: mydata
+        };
 
         this.toggleSearchConditions = this.toggleSearchConditions.bind(this);
     }
@@ -54,6 +58,8 @@ class RecallDetails extends React.Component {
         return (
             <div className={"popup"}>
                 <div className={"popup_inner"}>
+                    <FaWindowClose className={"closePopup"} onClick={this.props.closeModal}
+                                   onMouseUp={this.props.closeModal}/>
                     {
                         <ReactTable
                             manual
@@ -63,13 +69,13 @@ class RecallDetails extends React.Component {
                             showPagination={false}
                         />
                     }
-
                     <p>
                         {/*perhaps a bad solution, but couldn't make a decent CSS alignment*/}
-                        <table>
+                        <table className={"toggle-module"}>
                             <tr>
                                 <td><span>Show only differences</span></td>
-                                <td><Toggle onChange={this.toggleSearchConditions} defaultChecked={false}/></td>
+                                <td><Toggle onChange={this.toggleSearchConditions}
+                                            defaultChecked={this.state.showFiltered}/></td>
                             </tr>
                         </table>
                     </p>
@@ -80,6 +86,22 @@ class RecallDetails extends React.Component {
 
     toggleSearchConditions(event) {
         console.log("Event source state " + event.target.value);
+        //invert current state
+        this.setState({showFiltered: !this.state.showFiltered});
+        let filteredData = [];
+
+        //a stub until i find a good solution for set state logic
+        if (!this.state.showFiltered) {
+            mydata.map(d => {
+                if (d.nm1 !== d.nm2 || d.nm1 !== d.nm3 || d.nm2 !== d.nm3) {
+                    filteredData.push(d);
+                }
+            });
+        } else {
+            filteredData = mydata;
+        }
+
+        this.setState({displayData: filteredData});
     }
 }
 
