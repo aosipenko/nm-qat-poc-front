@@ -1,5 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
+import StatisticsChart from "./CustomChart";
 
 class RequestStatsCollapsible extends React.Component {
 
@@ -11,7 +12,7 @@ class RequestStatsCollapsible extends React.Component {
         return (
             <div>
                 <Collapsible trigger={<span>Request ID: {this.props.requestId}</span>}>
-                    <div>test text</div>
+                    <StatisticsChart/>
                 </Collapsible>
             </div>
         );

@@ -1,0 +1,6 @@
+.chart {
+    height: 45vh;
+    width: 60vw;
+    transition: 0.3s;
+    color: white;
+}
