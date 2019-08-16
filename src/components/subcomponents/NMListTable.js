@@ -2,6 +2,7 @@ import * as React from "react";
 import ReactTable from "react-table";
 import {FaEdit} from 'react-icons/fa';
 import "../style/NMListTable.css";
+import {getNMInstance} from "../../net/NMService";
 
 const mydata = [
     {
@@ -43,12 +44,21 @@ const myColumns = [
 
 class NMListTable extends React.Component {
     render() {
+        let randomData = [];
+        for (var i = 0; i < 10; i++) {
+            let dataInstance = getNMInstance();
+            randomData.push({
+                serverId: dataInstance.name,
+                serverIP: dataInstance.IP,
+                serverDesc: dataInstance.desc
+            });
+        }
         return (
             <div>
                 <ReactTable
                     manual
                     minRows={0}
-                    data={mydata}
+                    data={randomData}
                     columns={myColumns}
                     showPagination={false}
                 />

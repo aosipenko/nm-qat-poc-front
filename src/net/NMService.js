@@ -5,96 +5,91 @@ const S_NAME_POOL = ["Trump", "Perry", "Reeves", "Lee", "Skywalker", "Reagan", "
 
 const NM_INSTANCE_POOL = ["NM v1 Instance 1", "NM v1 Instance 2", "NM v2 Instance 1", "NM v2 Instance 2", "NM v2 Instance 3", "NM v2 Instance 4", "NM v2 Instance 5"];
 
-class NMService {
+export function getNMInstance() {
+    return {
+        name: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
+        IP: generateRandomIP(),
+        desc: "lorem ipsum"
+    };
+}
 
-
-    getNMInstance() {
-        return {
-            name: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
-            IP: this.generateRandomIP(),
-            desc: "lorem ipsum"
-        };
-    }
-
-    getRequest() {
-        let entities = [];
-        for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
-            entities.push({
-                name: this.generateRandomName(),
-                type: ENTITY_TYPE
-            });
-        }
-
+export function getRequest() {
+    let entities = [];
+    for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
         let nmList = [];
 
-        for (let i = 0; i < Math.floor(Math.random() * NM_INSTANCE_POOL.length);) {
+        for (let j = 0; j < Math.floor(Math.random() * NM_INSTANCE_POOL.length);) {
             var nmInstance = NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)];
             if (!nmList.includes(nmInstance)) {
                 nmList.push(nmInstance);
-                ++i;
+                ++j;
             }
         }
 
-        return {
-            entities: entities,
+        entities.push({
+            seq: i,
+            name: generateRandomName(),
+            type: ENTITY_TYPE,
             nmList: nmList
-        };
+        });
     }
 
-    generateResponse() {
-        let responseList =
-            [
-                {
-                    nmName: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
-                    responseTime: Math.random() * 1000,
-                    precision: Math.random() * 100,
-                    recall: 5,
-                    recallDetails: [
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName()
-                    ]
-                },
-                {
-                    nmName: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
-                    responseTime: Math.random() * 1000,
-                    precision: Math.random() * 100,
-                    recall: 4,
-                    recallDetails: [
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName()
-                    ]
-                },
-                {
-                    nmName: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
-                    responseTime: Math.random() * 1000,
-                    precision: Math.random() * 100,
-                    recall: 7,
-                    recallDetails: [
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName(),
-                        this.generateRandomName()
-                    ]
-                }
-            ]
-        ;
-        return responseList;
-    }
+    return entities;
+}
 
-    generateRandomIP() {
-        return Math.floor(Math.random() * 256) + "." + Math.floor(Math.random() * 256) + "." + Math.floor(Math.random() * 256) + "." + Math.floor(Math.random() * 256);
-    }
+export function generateResponse() {
+    let responseList =
+        [
+            {
+                nmName: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
+                responseTime: Math.random() * 1000,
+                precision: Math.random() * 100,
+                recall: 5,
+                recallDetails: [
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName()
+                ]
+            },
+            {
+                nmName: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
+                responseTime: Math.random() * 1000,
+                precision: Math.random() * 100,
+                recall: 4,
+                recallDetails: [
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName()
+                ]
+            },
+            {
+                nmName: NM_INSTANCE_POOL[Math.floor(Math.random() * NM_INSTANCE_POOL.length)],
+                responseTime: Math.random() * 1000,
+                precision: Math.random() * 100,
+                recall: 7,
+                recallDetails: [
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName(),
+                    generateRandomName()
+                ]
+            }
+        ]
+    ;
+    return responseList;
+}
 
-    generateRandomName() {
-        return F_NAME_POOL[Math.floor(Math.random() * F_NAME_POOL.length)] + " " + S_NAME_POOL[Math.floor(Math.random() * S_NAME_POOL.length)];
-    }
+export function generateRandomIP() {
+    return Math.floor(Math.random() * 256) + "." + Math.floor(Math.random() * 256) + "." + Math.floor(Math.random() * 256) + "." + Math.floor(Math.random() * 256);
+}
+
+export function generateRandomName() {
+    return F_NAME_POOL[Math.floor(Math.random() * F_NAME_POOL.length)] + " " + S_NAME_POOL[Math.floor(Math.random() * S_NAME_POOL.length)];
 }

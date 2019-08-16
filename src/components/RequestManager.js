@@ -2,6 +2,7 @@ import React from "react";
 import "./style/RequestMGRCollapsible.css";
 import "./style/RequestManager.css";
 import RequestInfo from "./subcomponents/RequestInfo";
+import {getRequest} from "../net/NMService";
 
 class RequestManager extends React.Component {
     constructor(props) {
@@ -28,11 +29,20 @@ class RequestManager extends React.Component {
             activeElements: []
         };
 
-        this.state.data.map(value => {
+        let randomData = getRequest();
+
+        randomData.map(value => {
             this.state.elements.push(
-                <RequestInfo requestId={value.id} nmList={value.nmList}/>
+                <RequestInfo requestId={value.seq} nmList={value.nmList}/>
             );
         });
+
+        // this.state.data.map(value => {
+        //     this.state.elements.push(
+        {/*<RequestInfo requestId={value.id} nmList={value.nmList}/>*/
+        }
+        // );
+        // });
 
         this.state.activeElements = this.state.elements;
 
