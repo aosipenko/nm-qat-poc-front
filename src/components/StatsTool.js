@@ -1,7 +1,8 @@
 import React from "react";
 import RequestStatsCollapsible from "./subcomponents/RequestStatsCollapsible";
+import {Scrollbars} from 'react-custom-scrollbars';
 
-class StatsTool extends React.Component{
+class StatsTool extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,13 +17,11 @@ class StatsTool extends React.Component{
     }
 
     render() {
-
-        return(
-            <p>
-                {this.props.isOpen && <div>
-                    {this.state.displayedElements}
-                </div>}
-            </p>
+        return (
+            <Scrollbars
+                style={{height: '100vh'}}>
+                {this.props.isOpen && this.state.displayedElements}
+            </Scrollbars>
         );
     }
 }

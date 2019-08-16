@@ -9,98 +9,21 @@ import {ResponsiveLine} from '@nivo/line'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-class StatisticsChart extends React.Component {
+class LineChart extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     render() {
-        const chartData = [
-            {
-                "id": "NM isntance 1",
-                "color": "hsl(199, 70%, 50%)",
-                "data": [
-                    {
-                        "x": "215",
-                        "y": 300
-                    },
-                    {
-                        "x": "216",
-                        "y": 297
-                    },
-                    {
-                        "x": "218",
-                        "y": 305
-                    },
-                    {
-                        "x": "219",
-                        "y": 351
-                    },
-                    {
-                        "x": "220",
-                        "y": 297
-                    }
-                ]
-            },
-            {
-                "id": "NM isntance 2",
-                "color": "hsl(199, 70%, 50%)",
-                "data": [
-                    {
-                        "x": "215",
-                        "y": 312
-                    },
-                    {
-                        "x": "216",
-                        "y": 345
-                    },
-                    {
-                        "x": "218",
-                        "y": 329
-                    },
-                    {
-                        "x": "219",
-                        "y": 294
-                    },
-                    {
-                        "x": "220",
-                        "y": 261
-                    }
-                ]
-            },
-            {
-                "id": "NM isntance 3",
-                "color": "hsl(199, 70%, 50%)",
-                "data": [
-                    {
-                        "x": "215",
-                        "y": 322
-                    },
-                    {
-                        "x": "216",
-                        "y": 274
-                    },
-                    {
-                        "x": "218",
-                        "y": 266
-                    },
-                    {
-                        "x": "219",
-                        "y": 297
-                    },
-                    {
-                        "x": "220",
-                        "y": 269
-                    }
-                ]
-            }
-        ];
-
         return (
             <div class="chart">
                 <ResponsiveLine
                     isInteractive={false}
-                    data={chartData}
+                    data={this.props.chartData}
                     margin={{top: 50, right: 110, bottom: 50, left: 60}}
                     xScale={{type: 'point'}}
-                    yScale={{type: 'linear', stacked: false, min: '200', max: '400'}}
+                    yScale={{type: 'linear', stacked: false, min: this.props.min, max: this.props.max}}
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
@@ -108,7 +31,7 @@ class StatisticsChart extends React.Component {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: 'Sequence ID',
+                        legend: this.props.horizontalAxisName,
                         legendOffset: 40,
                         legendPosition: 'middle'
                     }}
@@ -117,7 +40,7 @@ class StatisticsChart extends React.Component {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 45,
-                        legend: 'RESPONSE TIME, MS',
+                        legend: this.props.verticalAxisName,
                         legendOffset: -40,
                         legendPosition: 'middle'
                     }}
@@ -180,4 +103,4 @@ class StatisticsChart extends React.Component {
     }
 }
 
-export default StatisticsChart;
+export default LineChart;

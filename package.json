@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nivo/bar": "^0.59.2",
     "@nivo/line": "^0.59.3",
     "d3-scale": "^3.0.1",
     "react": "^16.9.0",
     "react-collapsible": "^2.6.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.9.0",
     "react-edit-button": "^1.0.2",
@@ -16,7 +16,6 @@
     "react-split-pane": "^0.1.87",
     "react-table": "^6.10.0",
     "react-toggle": "^4.0.2",
-    "react-vis": "^1.11.7",
     "reactjs-popup": "^1.4.2",
     "typescript": "^3.5.3"
   },
