@@ -6,6 +6,7 @@ import QATConfig from "./components/QATConfig";
 import RequestHisto from "./components/RequestHisto";
 import RequestManager from "./components/RequestManager";
 import StatsTool from "./components/StatsTool";
+import KafkaTool from "./components/KafkaTool";
 import "react-table/react-table.css";
 
 class App extends React.Component {
@@ -16,7 +17,8 @@ class App extends React.Component {
             openConfig: false,
             openRM: false,
             openHisto: false,
-            openStats: false
+            openStats: false,
+            openKafka: false
         }
         this.toggleConfig = this.toggleConfig.bind(this);
 
@@ -33,6 +35,7 @@ class App extends React.Component {
                     <QATConfig isOpen={this.state.openConfig}/>
                     <RequestManager isOpen={this.state.openRM}/>
                     <RequestHisto isOpen={this.state.openHisto}/>
+                    <KafkaTool isOpen={this.state.openKafka}/>
                     <StatsTool isOpen={this.state.openStats}/>
                 </div>
             </SplitPane>

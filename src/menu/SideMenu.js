@@ -14,6 +14,7 @@ class SideMenu extends React.Component {
                 <button onClick={() => this.props.toggleConfig("openRM")}>Request Manager</button>
                 <button onClick={() => this.props.toggleConfig("openHisto")}>Request History</button>
                 <button onClick={() => this.props.toggleConfig("openStats")}>Statistics Tool</button>
+                <button onClick={() => this.props.toggleConfig("openKafka")}>Kafka Service</button>
             </div>
         );
     }
